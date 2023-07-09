@@ -25,8 +25,6 @@ const getVideogame = async(req, res) => {
             console.log(gameData.id)
             const platforms = gameData.platforms.map(platform => platform.platform.name);
 
-            console.log(genres)
-
             videoGamesArray.push(gameData.name)
 
             await Videogame.findOrCreate({

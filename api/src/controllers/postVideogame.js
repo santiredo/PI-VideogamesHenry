@@ -17,19 +17,16 @@ const postVideogame = async(req, res) => {
 
         name = name.toLowerCase();
 
-        const newVideogame = await Videogame.findOrCreate({
-            where: {
-                name,
-                description,
-                platforms,
-                img,
-                released,
-                rating,
-            },
-
+        const newVideogame = await Videogame.create({
+            name,
+            description,
+            platforms,
+            img,
+            released,
+            rating,
         })
 
-        await newVideogame.addGenre(assignedGenres)
+        await newVideogame.addGenres(assignedGenres)
 
         res.status(200).json(newVideogame)
 
