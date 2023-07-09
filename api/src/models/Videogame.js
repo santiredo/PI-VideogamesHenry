@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     },
     platforms: {
       type: DataTypes.ARRAY(DataTypes.STRING),
@@ -27,7 +27,6 @@ module.exports = (sequelize) => {
     },
     released: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         isDateFormat(value) {
           if (!/\d{4}-\d{2}-\d{2}/.test(value)) {
@@ -37,8 +36,7 @@ module.exports = (sequelize) => {
       }
     },
     rating: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+      type: DataTypes.FLOAT,
     }
   },{timestamps: false})
 };
