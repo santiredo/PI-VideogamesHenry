@@ -1,18 +1,15 @@
-const axios = require('axios');
-const { Op } = require('sequelize')
-const {Videogame} = require('../db')
-
-const {API_KEY} = process.env;
-
-const URL = `https://api.rawg.io/api/games`
-
-const getVideogameByName = async(req, res) => {
-    const {name} = req.query
+const getVideogames = require('../controllers/getVideogames')
 
 
-    try {
+const getVideogameByName = async(name) => {
+    
+        const videogames = await getVideogames()
 
-        const DBgame = await Videogame.findAll({
+        videogames.filter(game => game.name.toLowerCase().includes(name.toLowerCase()))
+
+        return videogames
+
+/*         const DBgame = await Videogame.findAll({
             where:{
                 name :{
                     [Op.like]: `%${name.toLowerCase()}%`
@@ -45,18 +42,9 @@ const getVideogameByName = async(req, res) => {
                     DBgame.push(newGame)
                 }                
             });
-        }
+        } */
 
-        console.log(DBgame.length)
 
-        return res.status(200).send(DBgame)
-
-    } catch (error) {
-        if (error.message === "Request failed with status code 404") {
-            return res.status(404).json({error: 'El id no se encuentra disponible'})
-        }
-        return res.status(500).json({error: error.message})        
-    }
 }
 
 module.exports = getVideogameByName
