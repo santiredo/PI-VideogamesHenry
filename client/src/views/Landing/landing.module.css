@@ -1,0 +1,69 @@
+.landingPage{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('../../images/landingBackground.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.welcome {
+    position: absolute;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 60px;
+    letter-spacing: 10px;
+    margin: 0;
+    color: #090B08;
+    animation: welcome 2s steps(15);
+    top: 15%;
+    right: 15%;
+}
+
+@keyframes welcome {
+    from{
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    }
+    to{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
+
+.button{
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    position: absolute;
+    right: 15%;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    letter-spacing: 5px;
+    font-size: 40px;
+    color: #090B08;
+    background-color: #EADECB;
+    animation: shadow 1.5s ease-in-out infinite;
+    transition: 1s;
+}
+
+@keyframes shadow {
+    0%{
+        box-shadow: 0 0 10px #2D2736;
+    }
+    50%{
+        box-shadow: 0 0 40px #2D2736;
+    }
+    100%{
+        box-shadow: 0 0 10px #2D2736;
+    }
+}
+
+.button:hover{
+    transition: 1s;
+    transform: scale(1.1);
+    animation: none;
+    cursor: pointer;
+}
