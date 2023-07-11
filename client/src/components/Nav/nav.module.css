@@ -9,6 +9,7 @@
 }
 
 .navItems{
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -17,7 +18,8 @@
 }
 
 .title{
-    color: #493923;
+    margin: 10px 0;
+    color: #3e3627;
     font-size: 30px;
     font-weight: 400;
     letter-spacing: 5px;
@@ -32,6 +34,58 @@
 }
 
 .navLink{
+    position: relative;
     text-decoration: none;
-    color: #493923;
+    color: #3e3627;
+    letter-spacing: 2px;
+}
+
+.navLink:hover{
+    cursor: pointer;
+}
+
+.navLink:hover::before{
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-left: 5px solid #3e3627;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: calc(50% - 5px);
+    animation: beforeLink .2s forwards;
+}
+
+.navLink:hover::after{
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid #3e3627;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: calc(50% - 5px);
+    animation: afterLink .2s forwards;
+}
+
+@keyframes beforeLink {
+    0% {
+        left: -20px;
+    }
+    100%{
+        left: -10px;
+    }
+}
+
+@keyframes afterLink {
+    0% {
+        right: -20px;
+    }
+    100%{
+        right: -10px;
+    }
 }
