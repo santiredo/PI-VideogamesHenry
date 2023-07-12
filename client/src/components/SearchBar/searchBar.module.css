@@ -1,7 +1,5 @@
 .searchBar{
-    margin-top: 150px;
     display: flex;
-    padding: 10px;
     gap: 20px;
 }
 
@@ -31,6 +29,7 @@
 }
 
 .button {
+    font-size: 15px;
     padding: 2px 10px;
     border: none;
     border-radius: 2px;

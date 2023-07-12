@@ -12,8 +12,8 @@ export default function Home () {
     return (
         <div className={style.homePage}>
             <div className={style.filterAndSearchbar}>
-                <SearchBar/>
                 <Filters/>
+                <SearchBar/>
             </div>
             
             <Cards/>

@@ -8,7 +8,8 @@ export default function Filters(){
 
 
     const [order, setOrder] = useState(false)
-    const [gender, setGender] = useState(false)
+    const [genres, setGenres] = useState(false)
+    const [origin, setOrigin] = useState(false)
 
     const handleSelectOrder = (event) => {
         const orderOptions = document.querySelector("#orderOptions")
@@ -36,13 +37,13 @@ export default function Filters(){
     const handleSelectGender = (event) => {
         const genderOptions = document.querySelector('#genderOptions');
 
-        if(!gender) {
-            setGender(true)
+        if(!genres) {
+            setGenres(true)
             genderOptions.classList.remove('hiddenOptions');            
             genderOptions.classList.add('genderActive');            
             
         } else{
-            setGender(false)
+            setGenres(false)
 
             setTimeout(() => {
                 genderOptions.classList.remove('hideGender');
@@ -54,6 +55,30 @@ export default function Filters(){
             genderOptions.classList.add('hideGender')
         }
         event.currentTarget.classList.toggle('selectGenderActive');
+    }
+
+    const handleSelectOrigin = (event) => {
+        const originOptions = document.querySelector('#originOptions')
+
+        if(!origin){
+            setOrigin(true)
+
+            originOptions.classList.remove('hiddenOptions');
+            originOptions.classList.add('originActive');
+        } else {
+            setOrigin(false)
+
+            setTimeout(() => {
+                originOptions.classList.remove('hideOrigin');
+                originOptions.classList.add('hiddenOptions');
+
+            }, 500);
+
+            originOptions.classList.remove('originActive')
+            originOptions.classList.add('hideOrigin');
+        }
+        event.currentTarget.classList.toggle('selectOriginActive')
+
     }
 
     return(
@@ -75,7 +100,7 @@ export default function Filters(){
                         <p value="D">+Rating</p>
                     </div>
                     <div className="option">
-                            <p value="D">-Rating</p>
+                        <p value="D">-Rating</p>
                     </div>
                 </div>
             </div>
@@ -88,83 +113,83 @@ export default function Filters(){
                 </div>
                 <div className='hiddenOptions' id="genderOptions">
                     <div className="option">
-                            <p value="ShowAll">Show all</p>
+                        <p value="ShowAll">Show all</p>
                     </div>
                     <div className="option">
-                            <p value="Male">Action</p>
+                        <p value="Male">Action</p>
                     </div>
                     <div className="option">
-                            <p value="Female">Adventure</p>
+                        <p value="Female">Adventure</p>
                     </div>
                     <div className="option">
-                            <p value="Genderless">RPG</p>
+                        <p value="Genderless">RPG</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Indie</p>
+                        <p value="unknown">Indie</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Strategy</p>
+                        <p value="unknown">Strategy</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Shooter</p>
+                        <p value="unknown">Shooter</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Casual</p>
+                        <p value="unknown">Casual</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Simulation</p>
+                        <p value="unknown">Simulation</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Puzzle</p>
+                        <p value="unknown">Puzzle</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Arcade</p>
+                        <p value="unknown">Arcade</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Platformer</p>
+                        <p value="unknown">Platformer</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Multiplayer</p>
+                        <p value="unknown">Multiplayer</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Racing</p>
+                        <p value="unknown">Racing</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Sports</p>
+                        <p value="unknown">Sports</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Fighting</p>
+                        <p value="unknown">Fighting</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Family</p>
+                        <p value="unknown">Family</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Board games</p>
+                        <p value="unknown">Board games</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Educational</p>
+                        <p value="unknown">Educational</p>
                     </div>
                     <div className="option">
-                            <p value="unknown">Card</p>
+                        <p value="unknown">Card</p>
                     </div>
                 </div>
             </div>
 
             <div className='selectBox'>
-                <div onClick={handleSelectGender} className='selectGender' id="genderSelect">
+                <div onClick={handleSelectOrigin} className='selectOrigin' id="originSelect">
                     <div className='selectedContent'>
                         <p className='title'>Origin</p>
                     </div>
                 </div>
-                <div className='hiddenOptions' id="genderOptions">
+                <div className='hiddenOptions' id="originOptions">
                     <div className="option">
-                            <p value="ShowAll">SHOW ALL</p>
+                        <p value="ShowAll">Show all</p>
                     </div>
                     <div className="option">
-                            <p value="Male">API</p>
+                        <p value="Male">Api</p>
                     </div>
                     <div className="option">
-                            <p value="Female">DATA BASE</p>
+                        <p value="Female">Data base</p>
                     </div>
                 </div>
             </div>

@@ -56,6 +56,7 @@
 .p {
     color: #3e3627;
     animation: welcome 1.5s steps(19);
+    font-size: 25px
 }
 
 @keyframes welcome {
