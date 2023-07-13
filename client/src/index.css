@@ -3,8 +3,6 @@ body {
   font-family: 'Roboto Slab', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #8349BF, #350a62d1);
-  z-index: 0;
 }
 
 body::-webkit-scrollbar {

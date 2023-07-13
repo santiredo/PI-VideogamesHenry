@@ -14,12 +14,12 @@
     align-items: center;
     justify-content: space-around;
     width: 80%;
-    background-color: #EADECB;
+    background-color: #0B0332;
 }
 
 .title{
     margin: 10px 0;
-    color: #3e3627;
+    color: #dc80e6;
     font-size: 30px;
     font-weight: 400;
     letter-spacing: 5px;
@@ -36,7 +36,7 @@
 .navLink{
     position: relative;
     text-decoration: none;
-    color: #3e3627;
+    color: #dc80e6;
     letter-spacing: 2px;
 }
 
@@ -51,7 +51,7 @@
     width: 0;
     border-top: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-left: 5px solid #3e3627;
+    border-left: 5px solid #dc80e6;
     border-bottom: 5px solid transparent;
     position: absolute;
     top: calc(50% - 5px);
@@ -65,7 +65,7 @@
     width: 0;
     border-top: 5px solid transparent;
     border-left: 5px solid transparent;
-    border-right: 5px solid #3e3627;
+    border-right: 5px solid #dc80e6;
     border-bottom: 5px solid transparent;
     position: absolute;
     top: calc(50% - 5px);

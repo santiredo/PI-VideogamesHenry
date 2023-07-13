@@ -16,8 +16,8 @@ export default function Landing () {
     return (
         <div className={style.landingPage}>
             <h1 className={style.welcome}>Videogames PI</h1>
-            <button onClick={handleHome} className={style.button}>Let's see the project</button>
             <p className={style.p}>By Santiago Redondo</p>
+            <button onClick={handleHome} className={style.button}>Let's see the project</button>
         </div>
     )
 }
