@@ -1,0 +1,9 @@
+.cardsSection{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 250px;
+    width: 80%;
+    column-gap: 2.5%;
+    row-gap: 50px;
+}
