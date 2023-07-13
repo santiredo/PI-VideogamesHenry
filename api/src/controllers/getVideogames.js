@@ -13,9 +13,21 @@ const getVideogames = async() => {
     
     while (videogames.length < 100){
         const response = await axios(`${URL}&page=${pageNum}`);
-        const apiGames = response.data.results;
+        const completeGames = response.data.results;
+
+        const localGames = completeGames.map(game => {
+            return {
+                id: game.id,
+                name: game.name,
+                released: game.released,
+                image: game.background_image,
+                rating: game.rating,
+                platforms: game.platforms.map(platform => platform.platform.name),
+                genres: game.genres.map(genre => genre.name),
+            }
+        })
         
-        videogames.push(...apiGames)
+        videogames.push(...localGames)
 
         pageNum++
     }
