@@ -3,6 +3,7 @@ import { useLocation, Route, Routes } from 'react-router-dom';
 import Landing from './views/Landing/Landing';
 import Home from './views/Home/Home'
 import Nav from './components/Nav/Nav';
+import Detail from './views/Detail/Detail'
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
          <Nav />
          <Routes>
             <Route path='/home' element={<Home/>}/>
-            <Route path='/detail' />
+            <Route path='/detail/:id' element={<Detail/>}/>
             <Route path='/form' />
          </Routes>
        </>

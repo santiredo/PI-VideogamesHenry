@@ -69,6 +69,7 @@ export default function Cards() {
                     {displayedVideogames.map(game => {
                         return(
                             <Card
+                                id={game.id}
                                 key={game.id}
                                 name={game.name}
                                 image={game.image}
@@ -84,8 +85,6 @@ export default function Cards() {
                 </>
 
             )}
-
-            
         </div>
     )
 }

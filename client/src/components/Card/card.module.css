@@ -88,7 +88,8 @@
     left: -5px;
 }
 
-.data span{
+.moreDetails{
+    text-decoration: none;
     color: #ADEAF9;
     margin-left: 40px;
     border-radius: 2px;
@@ -102,17 +103,17 @@
     transition: .5s;
 }
 
-.data span:hover{
+.moreDetails:hover{
     cursor: pointer;
     transform: scale(1.1);
     transition: .5s;
 }
 
-.data span:hover::before{
+.moreDetails:hover::before{
     transform: scale(2);
 }
 
-.data span::before{
+.moreDetails::before{
     content: '';
     display: block;
     border-radius: 100%;
@@ -135,7 +136,7 @@
     }
     50%{
         top: 20px;
-        left: 103px;
+        left: 100px;
     }
     100%{
         top: 20px;
