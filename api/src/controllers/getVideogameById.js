@@ -13,7 +13,15 @@ const getVideogameById = async(id) => {
         return game
     } else {
         const game = await axios(`${URL}/${id}?key=${API_KEY}`)
-        return game.data
+        return {
+            id: game.data.id,
+            name: game.data.name,
+            released: game.data.released,
+            image: game.data.background_image,
+            rating: game.data.rating,
+            platforms: game.data.platforms.map(platform => platform.platform.name),
+            genres: game.data.genres.map(genre => genre.name),
+        }
     }
 
 }

@@ -6,8 +6,6 @@ const getByIdHandler = async(req, res) => {
     try{
         const {id} = req.params;
 
-        console.log(id)
-
         const videogame = await getVideogameById(id)
 
         res.status(200).json(videogame)
