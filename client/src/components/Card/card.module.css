@@ -2,18 +2,48 @@
     position: relative;
     width: 18%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    transform: scale(0);
+    text-align: center;
+    animation: cardDivPresentation 1s .5s forwards;
 }
+
+@keyframes cardDivPresentation {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.cardDiv:hover{
+    transform: scale(1);
+    z-index: 1000;
+}
+
 
 .imageDiv{
     width: 100%;
     height: 150px;
     overflow: hidden;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    border-radius: 5px;
+    border-radius: 3px;
+}
+
+.cardDiv h2{
+    position: absolute;
+    padding: 5px 0;
+    width: 100%;
+    bottom: -20px;
+    background-color: #0B0332;
+    color: #dc80e6;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    z-index: 900;
 }
 
 .imageDiv img{
@@ -23,24 +53,14 @@
 }
 
 .data{
-    padding-bottom: 30px;
-    top: 0;
+    padding: 10px 0 30px 0;
+    bottom: -5px;
     background-color: #0B0332;
     width: 100%;
     height: fit-content;
     position: absolute;
-    border-radius: 5px;
+    border-radius: 3px;
     opacity: 0;
-}
-
-.data h2{
-    margin: 30px 0 10px 0;
-    color: #dc80e6;
-    border-radius: 2px;
-    font-size: 15px;
-    font-weight: 300;
-    text-align: center;
-    letter-spacing: 2px;
 }
 
 .data h4{
@@ -79,10 +99,17 @@
     width: fit-content;
     position: absolute;
     right: 10px;
+    transition: .5s;
 }
 
 .data span:hover{
     cursor: pointer;
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+.data span:hover::before{
+    transform: scale(2);
 }
 
 .data span::before{
@@ -98,6 +125,7 @@
     left: -2px;
     position: absolute;
     animation: moreInfo 2s ease-in-out infinite;
+    transition: .5s;
 }
 
 @keyframes moreInfo {
@@ -117,12 +145,12 @@
 
 .cardDiv:hover .data{
     opacity: 1;
-    transform: translateY(130px);
-    transition: 1s;
-    z-index: 800;
+    top: 150px;
+    z-index: 1000;
+    transition: .5s;
 }
 
 .cardDiv:hover .imageDiv img{
-    z-index: 900;
+    z-index: 0;
     opacity: 1;
 }

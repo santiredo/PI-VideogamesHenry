@@ -9,9 +9,11 @@ export default function Card({id, name, image, genres}){
         <div className={style.cardDiv}>
             <div className={style.imageDiv}>
                 <img src={image} alt="" />
+                
             </div>
+            <h2>{name}</h2>
             <div className={style.data}>
-                <h2>{name}</h2>
+                
                 {genres?.map((genre) => {
                     return <h4 key={`${id}-${genre}`}>{genre}</h4>;
                 })}
