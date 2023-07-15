@@ -16,6 +16,7 @@ const getVideogameById = async(id) => {
         return {
             id: game.data.id,
             name: game.data.name,
+            description: game.data.description,
             released: game.data.released,
             image: game.data.background_image,
             rating: game.data.rating,
