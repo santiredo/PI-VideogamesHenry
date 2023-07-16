@@ -1,0 +1,138 @@
+.selectBoxForm{
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.selectplatform,
+.selectGenderForm {
+    padding: 2px 10px;
+    color: #ADEAF9;
+    width: 250px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    font-weight: 300;
+    transition: .5s;
+    background-color: #0b0332;
+}
+
+.selectplatform:hover,
+.selectGenderForm:hover{
+    cursor: pointer;
+}
+
+.platformActive,
+.selectGenderActiveForm {
+    padding: 2px 10px;
+    color: #ADEAF9;
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    background-color: #0B0332;
+    cursor: pointer;
+}
+
+.titleForm{
+    margin: 0;
+    font-size: 15px;
+}
+
+.hiddenOptionsForm{
+    color: #ADEAF9;
+    overflow: auto;
+    display: none;
+}
+
+.platformActive,
+.hidePlatform,
+.genderActiveForm,
+.hideGenderForm {
+    padding: 5px 0;
+    background-color: #0B0332;
+    color: #ADEAF9;
+    letter-spacing: 2px;
+    font-weight: 300;
+    overflow: auto;
+    border-radius: 2px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    top: 40px;
+    gap: 15px;
+    z-index: 999;
+    animation: gender .5s;
+    height: 200px;
+}
+
+.platformActive::-webkit-scrollbar,
+.hidePlatform::-webkit-scrollbar,
+.genderActiveForm::-webkit-scrollbar,
+.hideGenderForm::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes gender {
+    0%{
+        height: 0px;
+        opacity: 0;
+    }
+    100%{
+        height: 200px;
+        opacity: 1;
+    }
+}
+
+.hidePlatform,
+.hideGenderForm{
+    animation: hideGender .5s;
+}
+
+@keyframes hideGender {
+    0%{
+        height: 200px;
+        opacity: 1;
+    }
+    100%{
+        height: 0;
+        opacity: 0;
+    }
+}
+
+.optionForm {
+    padding-left: 30px;
+}
+
+.optionForm p{
+    position: relative;
+    margin: 0;
+    transition: .5s;
+}
+
+.optionForm p:hover{
+    cursor: pointer;
+    transform: translateX(10px);
+    transition: .2s;
+}
+
+.optionForm p:hover::before{
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-left: 5px solid #ADEAF9;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: calc(50% - 5px);
+    left: -15px;
+}

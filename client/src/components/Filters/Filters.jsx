@@ -84,7 +84,7 @@ export default function Filters(){
     return(
         <div className='favFilters'>
             <div className='selectBox'>
-                <div onClick={handleSelectOrder} className='selectId' id="orderSelect">
+                <div onClick={handleSelectOrder} className='selectId'>
                     <div className='selectedContent'>
                         <p className='title'>Order</p>
                     </div>
@@ -106,8 +106,8 @@ export default function Filters(){
             </div>
 
             <div className='selectBox'>
-                <div onClick={handleSelectGender} className='selectGender' id="genderSelect">
-                    <div className='selectedContent'>
+                <div onClick={handleSelectGender} className='selectGender'>
+                    <div>
                         <p className='title'>Genres</p>
                     </div>
                 </div>
@@ -176,7 +176,7 @@ export default function Filters(){
             </div>
 
             <div className='selectBox'>
-                <div onClick={handleSelectOrigin} className='selectOrigin' id="originSelect">
+                <div onClick={handleSelectOrigin} className='selectOrigin'>
                     <div className='selectedContent'>
                         <p className='title'>Origin</p>
                     </div>
