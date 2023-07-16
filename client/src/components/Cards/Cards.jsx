@@ -1,26 +1,22 @@
 
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from '../Card/Card'
 import loadingGif from '../../images/loading.gif'
 import style from './cards.module.css'
+import { showVideogames } from '../../redux/action';
 
 
 export default function Cards() {
 
-    const [videogames, setVideogames] = useState([]);
-    const [loading, setLoading] = useState(true)
+    const videogames = useSelector(state => state.videogames)
+    const loading = useSelector(state => state.loading)
+
+    const dispatch = useDispatch()
 
     const displayVideogames = async () => {
-
-        try {
-            const response = await axios('http://localhost:3001/videogames')
-            setVideogames(response.data)
-            setLoading(false)
-            
-        } catch (error) {
-            alert(error.message)            
-        }
+        console.log(loading)
+        dispatch(showVideogames())
     }
 
     const videogamesPerPage = 15
