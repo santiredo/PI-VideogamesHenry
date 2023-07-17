@@ -32,20 +32,24 @@ export default function Cards() {
     }, [dispatch]);
 
     return (
+        <>
+        
         <div className={style.cardsSection}>
             {loading ? (
                 <img className={style.loadingGif} src={loadingGif} alt="" />
             ) : (
                 <>
-                    {displayedVideogames.map(game => (
-                        <Card
-                            id={game.id}
-                            key={game.id}
-                            name={game.name}
-                            image={game.image}
-                            genres={game.genres}
-                        />
-                    ))}
+                    <div className={style.cardsDisplay}>
+                        {displayedVideogames.map(game => (
+                            <Card
+                                id={game.id}
+                                key={game.id}
+                                name={game.name}
+                                image={game.image}
+                                genres={game.genres}
+                            />
+                        ))}
+                    </div>
                     <div className={style.pagesHandler}>
                         <button onClick={() => pagesHandler(-1)} className={style.previousButton}>⇜</button>
                         <h4>Page: {currentPage}</h4>
@@ -54,5 +58,6 @@ export default function Cards() {
                 </>
             )}
         </div>
+        </>
     )
 }
