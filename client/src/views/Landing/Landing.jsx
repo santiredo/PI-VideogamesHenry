@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import style from './landing.module.css'
-
+import style from './landing.module.css';
 
 export default function Landing () {
 
@@ -10,7 +9,6 @@ export default function Landing () {
         event.preventDefault()
 
         navigate('/home')
-
     }
 
     return (

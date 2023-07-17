@@ -1,8 +1,10 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import background from '../../images/formBackground.jpg'
 import style from './form.module.css';
 import './form.css'
+import { useDispatch } from 'react-redux';
+import { changeRouteDetails, changeRouteHome } from '../../redux/action';
 
 
 export default function Form () {
@@ -105,6 +107,13 @@ export default function Form () {
         platformOptions.classList.remove('platformActive')
         platformOptions.classList.add('hidePlatform')
     }
+
+    // RESETEO DEL LOADING
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(changeRouteHome())
+        dispatch(changeRouteDetails())
+    },[dispatch])
 
     return (
         <div className={style.createVideogame}>

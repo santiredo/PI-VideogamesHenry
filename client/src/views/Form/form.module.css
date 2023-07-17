@@ -67,9 +67,10 @@
 
 .form input{
     color: #0B0332;
-    padding: 2.5px 5%;
+    padding: 2.5px 3%;
     height: 25px;
     width: 90%;
+    font-family: 'Roboto Slab', serif;
     font-size: 15px;
     background-color: #adeaf9a7;
     border: none;

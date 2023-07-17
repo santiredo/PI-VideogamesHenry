@@ -1,6 +1,8 @@
 const initialState = {
-    loading: true,
+    loadingHome: true,
+    loadingDetails: true,
     videogames: [],
+    videogameDetails: {},
     currentPage: 1,
 }
 
@@ -11,7 +13,23 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 videogames: action.payload,
-                loading: false
+                loadingHome: false
+            }
+        case 'SHOW_DETAILS':
+            return {
+                ...state,
+                videogameDetails: action.payload,
+                loadingDetails: false
+            }
+        case 'CHANGE_ROUTE_HOME':
+            return {
+                ...state,
+                loadingHome: true
+            }
+        case 'CHANGE_ROUTE_DETAILS':
+            return {
+                ...state,
+                loadingDetails: true
             }
             
         default:

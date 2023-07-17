@@ -10,14 +10,9 @@ import { showVideogames } from '../../redux/action';
 export default function Cards() {
 
     const videogames = useSelector(state => state.videogames)
-    const loading = useSelector(state => state.loading)
+    const loading = useSelector(state => state.loadingHome)
 
     const dispatch = useDispatch()
-
-    const displayVideogames = async () => {
-        console.log(loading)
-        dispatch(showVideogames())
-    }
 
     const videogamesPerPage = 15
     const [currentPage, setCurrentPage] = useState(1)
@@ -50,9 +45,12 @@ export default function Cards() {
     const displayedVideogames = videogames.slice(firstIndexVideogame, lastIndexVideogame)
 
     useEffect(() => {
-        displayVideogames()
-        // eslint-disable-next-line
-    }, [])
+        const displayVideogames = () => {
+            dispatch(showVideogames())
+        };
+        displayVideogames();
+    
+    }, [dispatch]);
 
     return (
         <div className={style.cardsSection}>

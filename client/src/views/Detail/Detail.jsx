@@ -1,43 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from 'axios';
 import background from '../../videos/background.mp4';
 import loadingGif from '../../images/loading.gif'
 import style from './detail.module.css'
+import { useDispatch, useSelector } from "react-redux";
+import { showDetails } from "../../redux/action";
 
 
 export default function Detail() {
 
     const {id} = useParams();
-    const [videogame, setVideogame] = useState({});
-    const [loading, setLoading] = useState(true)
+    const dispatch = useDispatch();
+    const videogame = useSelector(state => state.videogameDetails);
+    const loading = useSelector(state => state.loadingDetails)
 
     useEffect(() => {
-        axios(`http://localhost:3001/videogames/${id}`)
-        .then(({data}) => {
-            if(data.name){
-                console.log(data);
-                data.platforms = data.platforms.map(platform => {
-                    return `<p>${platform}</p>`
-                }).join('\n')
-                data.genres = data.genres.map(genre => {
-                    return `<p>${genre}</p>`
-                }).join('\n')
-                setVideogame(data);
-                setLoading(false)
-            } else{
-                window.alert('No hay personajes con ese ID')
-            }
-        });
+        const displayDetails = () => {
+            dispatch(showDetails(id))
+            
+        };
+        displayDetails();
 
         let video = document.getElementById('backgroundVideo')
-        video.playbackRate = 0.5
-        console.log(video)
+        video.playbackRate = 0.5;
 
-        return () =>{
-            setVideogame({});
-        };
-    },[id])
+    }, [dispatch, id])
 
 
     return (
