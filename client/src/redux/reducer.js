@@ -36,7 +36,19 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 currentPage: action.payload
             }
-            
+        case 'ORDER':
+            const sortedVideogames = [...state.videogames].sort((a, b) => {
+                if (action.payload === 'AZ') return a.name.localeCompare(b.name);
+                if (action.payload === 'ZA') return b.name.localeCompare(a.name);
+                if (action.payload === '+') return b.rating - a.rating;
+                return action.payload === '-' && a.rating - b.rating;
+            });
+
+            return {
+                ...state,
+                videogames: sortedVideogames
+            }
+
         default:
             return state;
     }

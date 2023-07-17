@@ -1,11 +1,22 @@
 
-import { useState } from 'react'
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { orderVideogames } from '../../redux/action';
 import './filters.css'
 
 
 export default function Filters(){
 
+    const dispatch = useDispatch()
+    const videogames = useSelector(state => state.videogames)
 
+    const handleOrder = (event) => {
+        dispatch(orderVideogames(event.target.getAttribute('value')))
+        console.log(videogames)
+    }
+
+
+    // CSS DE LOS SELECTS
 
     const [order, setOrder] = useState(false)
     const [genres, setGenres] = useState(false)
@@ -91,16 +102,16 @@ export default function Filters(){
                 </div>
                 <div className='hiddenOptions' id="orderOptions">
                     <div className="option">
-                        <p value="A">A-Z</p>
+                        <p onClick={handleOrder} value="AZ">A-Z</p>
                     </div>
                     <div className="option">
-                        <p value="D">Z-A</p>
+                        <p onClick={handleOrder} value="ZA">Z-A</p>
                     </div>
                     <div className="option">
-                        <p value="D">+Rating</p>
+                        <p onClick={handleOrder} value="+">+Rating</p>
                     </div>
                     <div className="option">
-                        <p value="D">-Rating</p>
+                        <p onClick={handleOrder} value="-">-Rating</p>
                     </div>
                 </div>
             </div>

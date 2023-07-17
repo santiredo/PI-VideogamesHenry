@@ -73,3 +73,10 @@ export const setPage = (direction, currentPage, videogamesPerPage, videogames) =
         }
     }
 }
+
+export const orderVideogames = (order) => {
+    return {
+        type: 'ORDER',
+        payload: order
+    }
+}
