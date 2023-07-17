@@ -8,7 +8,7 @@ import { setPage, showVideogames } from '../../redux/action';
 
 export default function Cards() {
 
-    const videogames = useSelector(state => state.videogames);
+    const videogames = useSelector(state => state.renderedVideogames);
     const loading = useSelector(state => state.loadingHome);
 
     const dispatch = useDispatch();

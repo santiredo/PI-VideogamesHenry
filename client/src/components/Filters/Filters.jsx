@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { orderVideogames } from '../../redux/action';
+import { orderByGenre, orderVideogames } from '../../redux/action';
 import './filters.css'
 
 
@@ -15,6 +15,9 @@ export default function Filters(){
         console.log(videogames)
     }
 
+    const handleGender = (event) => {
+        dispatch(orderByGenre(event.target.getAttribute('value')))
+    }
 
     // CSS DE LOS SELECTS
 
@@ -124,64 +127,64 @@ export default function Filters(){
                 </div>
                 <div className='hiddenOptions' id="genderOptions">
                     <div className="option">
-                        <p value="ShowAll">Show all</p>
+                        <p onClick={handleGender} value="ShowAll">Show all</p>
                     </div>
                     <div className="option">
-                        <p value="Male">Action</p>
+                        <p onClick={handleGender} value="Action">Action</p>
                     </div>
                     <div className="option">
-                        <p value="Female">Adventure</p>
+                        <p onClick={handleGender} value="Adventure">Adventure</p>
                     </div>
                     <div className="option">
-                        <p value="Genderless">RPG</p>
+                        <p onClick={handleGender} value="RPG">RPG</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Indie</p>
+                        <p onClick={handleGender} value="Indie">Indie</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Strategy</p>
+                        <p onClick={handleGender} value="Strategy">Strategy</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Shooter</p>
+                        <p onClick={handleGender} value="Shooter">Shooter</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Casual</p>
+                        <p onClick={handleGender} value="Casual">Casual</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Simulation</p>
+                        <p onClick={handleGender} value="Simulation">Simulation</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Puzzle</p>
+                        <p onClick={handleGender} value="Puzzle">Puzzle</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Arcade</p>
+                        <p onClick={handleGender} value="Arcade">Arcade</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Platformer</p>
+                        <p onClick={handleGender} value="Platformer">Platformer</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Multiplayer</p>
+                        <p onClick={handleGender} value="Multiplayer">Multiplayer</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Racing</p>
+                        <p onClick={handleGender} value="Racing">Racing</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Sports</p>
+                        <p onClick={handleGender} value="Sports">Sports</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Fighting</p>
+                        <p onClick={handleGender} value="Fighting">Fighting</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Family</p>
+                        <p onClick={handleGender} value="Family">Family</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Board games</p>
+                        <p onClick={handleGender} value="Board games">Board games</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Educational</p>
+                        <p onClick={handleGender} value="Educational">Educational</p>
                     </div>
                     <div className="option">
-                        <p value="unknown">Card</p>
+                        <p onClick={handleGender} value="Card">Card</p>
                     </div>
                 </div>
             </div>

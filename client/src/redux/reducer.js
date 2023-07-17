@@ -2,6 +2,7 @@ const initialState = {
     loadingHome: true,
     loadingDetails: true,
     videogames: [],
+    renderedVideogames: [],
     videogameDetails: {},
     currentPage: 1,
 }
@@ -13,6 +14,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 videogames: action.payload,
+                renderedVideogames: action.payload,
                 loadingHome: false
             }
         case 'SHOW_DETAILS':
@@ -37,16 +39,22 @@ export default function rootReducer(state = initialState, action) {
                 currentPage: action.payload
             }
         case 'ORDER':
-            const sortedVideogames = [...state.videogames].sort((a, b) => {
-                if (action.payload === 'AZ') return a.name.localeCompare(b.name);
-                if (action.payload === 'ZA') return b.name.localeCompare(a.name);
-                if (action.payload === '+') return b.rating - a.rating;
-                return action.payload === '-' && a.rating - b.rating;
-            });
-
             return {
                 ...state,
-                videogames: sortedVideogames
+                renderedVideogames: [...state.videogames].sort((a, b) => {
+                    if (action.payload === 'AZ') return a.name.localeCompare(b.name);
+                    if (action.payload === 'ZA') return b.name.localeCompare(a.name);
+                    if (action.payload === '+') return b.rating - a.rating;
+                    return action.payload === '-' && a.rating - b.rating;
+                })
+            }
+        case 'GENRE':
+            let filteredVideogames = state.videogames.filter(videogame => videogame.genres.includes(action.payload))
+
+            if(action.payload === 'ShowAll') filteredVideogames = state.videogames
+            return {
+                ...state,
+                renderedVideogames: filteredVideogames
             }
 
         default:

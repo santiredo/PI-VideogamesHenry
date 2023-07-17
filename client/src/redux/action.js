@@ -80,3 +80,10 @@ export const orderVideogames = (order) => {
         payload: order
     }
 }
+
+export const orderByGenre = (genre) => {
+    return {
+        type: 'GENRE',
+        payload: genre
+    }
+}
