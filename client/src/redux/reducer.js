@@ -41,7 +41,7 @@ export default function rootReducer(state = initialState, action) {
         case 'ORDER':
             return {
                 ...state,
-                renderedVideogames: [...state.videogames].sort((a, b) => {
+                renderedVideogames: [...state.renderedVideogames].sort((a, b) => {
                     if (action.payload === 'AZ') return a.name.localeCompare(b.name);
                     if (action.payload === 'ZA') return b.name.localeCompare(a.name);
                     if (action.payload === '+') return b.rating - a.rating;
@@ -49,7 +49,7 @@ export default function rootReducer(state = initialState, action) {
                 })
             }
         case 'GENRE':
-            let filteredVideogames = state.videogames.filter(videogame => videogame.genres.includes(action.payload))
+            let filteredVideogames = state.renderedVideogames.filter(videogame => videogame.genres.includes(action.payload))
 
             if(action.payload === 'ShowAll') filteredVideogames = state.videogames
             return {
