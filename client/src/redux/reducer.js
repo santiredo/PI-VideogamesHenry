@@ -31,6 +31,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 loadingDetails: true
             }
+        case 'SET_PAGE':
+            return {
+                ...state,
+                currentPage: action.payload
+            }
             
         default:
             return state;

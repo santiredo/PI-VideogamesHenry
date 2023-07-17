@@ -50,3 +50,26 @@ export const changeRouteDetails = () => {
         type: 'CHANGE_ROUTE_DETAILS'
     }
 }
+
+export const setPage = (direction, currentPage, videogamesPerPage, videogames) => {
+
+
+    return (dispatch) => {
+        try {
+            
+            if(direction === -1 || (videogamesPerPage * currentPage) < videogames.length){
+                
+                if(currentPage + direction > 0){
+                    const newPage = currentPage + direction
+                    return dispatch({
+                        type: 'SET_PAGE',
+                        payload: newPage
+                    })
+                }
+            }
+            throw new Error(`Page ${currentPage + direction} have no videogames`)
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+}

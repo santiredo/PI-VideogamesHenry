@@ -1,10 +1,10 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from '../Card/Card'
 import loadingGif from '../../images/loading.gif'
 import style from './cards.module.css'
-import { showVideogames } from '../../redux/action';
+import { setPage, showVideogames } from '../../redux/action';
 
 
 export default function Cards() {
@@ -15,34 +15,14 @@ export default function Cards() {
     const dispatch = useDispatch()
 
     const videogamesPerPage = 15
-    const [currentPage, setCurrentPage] = useState(1)
-
-    const pagesHandler = (direction) => {
-
-        console.log(currentPage)
-
-        try {
-
-            if((currentPage > 1 && direction === -1) || (videogamesPerPage * currentPage) < videogames.length){
-                
-                if(currentPage + direction > 0){
-                    const newPage = currentPage + direction;
-                    setCurrentPage(newPage)
-                    return;
-                }
-            }
-            throw new Error(`Page ${currentPage + direction} have no videogames`)
-            
-        } catch (error) {
-            alert(error.message)
-        }
-
-
-    }
-
+    const currentPage = useSelector(state => state.currentPage);
     const firstIndexVideogame = (currentPage - 1) * videogamesPerPage;
     const lastIndexVideogame = firstIndexVideogame + videogamesPerPage;
     const displayedVideogames = videogames.slice(firstIndexVideogame, lastIndexVideogame)
+
+    const pagesHandler = (direction) => {
+        dispatch(setPage(direction, currentPage, videogamesPerPage, videogames))
+    }
 
     useEffect(() => {
         const displayVideogames = () => {
