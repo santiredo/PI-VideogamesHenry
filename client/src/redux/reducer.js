@@ -1,3 +1,4 @@
+
 const initialState = {
     loadingHome: true,
     loadingDetails: true,
@@ -5,6 +6,7 @@ const initialState = {
     renderedVideogames: [],
     videogameDetails: {},
     dbVideogames: [],
+    listedByName: [],
     currentPage: 1,
 }
 
@@ -71,6 +73,12 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 dbVideogames: [action.payload, ...state.dbVideogames]
+            }
+        case 'SEARCH_BY_NAME':
+            let renderedByName = state.videogames.filter(videogame => videogame.name.toLowerCase().includes(action.payload))
+            return {
+                ...state,
+                renderedVideogames: renderedByName
             }
 
         default:

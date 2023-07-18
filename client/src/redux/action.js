@@ -115,3 +115,11 @@ export const createVideogame = (videogame) => {
         }
     }
 }
+
+export const searchByName = (name) => {
+    console.log(name)
+    return {
+        type: 'SEARCH_BY_NAME',
+        payload: name
+    }
+}
