@@ -1,14 +1,14 @@
 const { Videogame, Genre } = require('../db')
 
-const postVideogame = async(name, description, platforms, image, released, rating, genres) => {
+const postVideogame = async(name, description, platforms, image, released, rating, Genres) => {
 
-    if(!name || !description || !platforms || !released || !genres) {
+    if(!name || !description || !platforms || !released) {
         return res.status(401).send('Faltan datos')
     }
 
     const assignedGenres = await Genre.findAll({
         where: {
-            name: genres
+            name: Genres
         }
     })
 

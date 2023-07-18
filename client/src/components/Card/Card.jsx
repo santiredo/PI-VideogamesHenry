@@ -3,10 +3,14 @@ import {NavLink} from 'react-router-dom';
 import style from './card.module.css'
 
 
-export default function Card({id, name, image, genres}){
+export default function Card({id, name, image, Genres}){
+
+    const click = () => {
+        console.log(Genres)
+    }
 
     return(
-        <div className={style.cardDiv}>
+        <div onClick={click} className={style.cardDiv}>
             <div className={style.imageDiv}>
                 <img src={image} alt="" />
                 
@@ -14,7 +18,7 @@ export default function Card({id, name, image, genres}){
             <h2>{name}</h2>
             <div className={style.data}>
                 
-                {genres?.map((genre) => {
+                {Genres?.map((genre) => {
                     return <h4 key={`${id}-${genre}`}>{genre}</h4>;
                 })}
                 <NavLink className={style.moreDetails} to={`/detail/${id}`}>More details</NavLink>

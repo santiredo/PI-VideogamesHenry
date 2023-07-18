@@ -51,7 +51,7 @@ export default function Detail() {
                                         <h5>Released: {videogame.released}</h5>
                                         <h5>Rating: {videogame.rating}</h5>
                                         <h4>Genres: </h4>
-                                        <div className={style.platforms} dangerouslySetInnerHTML={{ __html: videogame.genres}}></div>
+                                        <div className={style.platforms} dangerouslySetInnerHTML={{ __html: videogame.Genres}}></div>
                                     </div>
                                     <div>
                                         <h4>Platforms: </h4>

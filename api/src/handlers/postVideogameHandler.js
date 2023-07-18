@@ -4,9 +4,9 @@ const postVideogame = require('../controllers/postVideogame')
 const postVideogameHandler = async(req, res) => {
 
     try {
-        let {name, description, platforms, image, released, rating, genres} = req.body;
+        let {name, description, platforms, image, released, rating, Genres} = req.body;
 
-        const newVideogame = await postVideogame(name, description, platforms, image, released, rating, genres)
+        const newVideogame = await postVideogame(name, description, platforms, image, released, rating, Genres)
 
         res.status(200).json(newVideogame)
         

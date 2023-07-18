@@ -23,7 +23,7 @@ const getVideogames = async() => {
                 image: game.background_image,
                 rating: game.rating,
                 platforms: game.platforms.map(platform => platform.platform.name),
-                genres: game.genres.map(genre => genre.name),
+                Genres: game.genres.map(genre => genre.name),
             }
         })
         
@@ -32,13 +32,20 @@ const getVideogames = async() => {
         pageNum++
     }
 
-    const dbGames = await Videogame.findAll({
+    const dataBase = await Videogame.findAll({
         include: {
             model: Genre,
             attributes: ['name'],
             through: {
                 attributes: []
             }
+        }
+    })
+
+    const dbGames = dataBase.map(game => {
+        return {
+            ...game.toJSON(),
+            Genres: game.Genres.map(genre => genre.name)
         }
     })
 

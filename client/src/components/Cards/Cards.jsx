@@ -46,7 +46,7 @@ export default function Cards() {
                                 key={game.id}
                                 name={game.name}
                                 image={game.image}
-                                genres={game.genres}
+                                Genres={game.Genres}
                             />
                         ))}
                     </div>

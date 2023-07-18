@@ -16,7 +16,7 @@ export default function Form () {
     const [form, setForm] = useState({
         name: "",
         image:"",
-        genres: [],
+        Genres: [],
         platforms: [],
         description: "",
         released: "",
@@ -28,7 +28,7 @@ export default function Form () {
     const handleChange = (event) => {
         let name = event.target.name;
         let value = event.target.value;
-        if(name === 'platforms' || name === 'genres'){
+        if(name === 'platforms' || name === 'Genres'){
             value = value.split(', ').filter(Boolean)
         }
         setForm({
@@ -45,6 +45,8 @@ export default function Form () {
 
     const createHandler = (event) => {
         event.preventDefault()
+
+        console.log(form)
 
         dispatch(createVideogame(form))
         alert('Videojuego creado con exito!')
@@ -100,7 +102,13 @@ export default function Form () {
         const genre = event.target.innerText;
         const genderOptions = document.querySelector('#genderOptionsForm');
 
-        setForm({...form, genres: [...form.genres, genre]});
+        console.log(genre)
+
+        console.log(form)
+
+        setForm({...form, Genres: [...form.Genres, genre]});
+
+        console.log(form)
 
         setGenres(false)
 
@@ -246,8 +254,8 @@ export default function Form () {
                             </div>                            
                         </div>
                         <ul>
-                            <li id="genres" name="genres" value={form.genres} onChange={handleChange}>
-                                {form.genres.map(genre => `${genre}, `)}
+                            <li id="Genres" name="Genres" value={form.Genres} onChange={handleChange}>
+                                {form.Genres.map(genre => `${genre}, `)}
                             </li>
                         </ul>
                         <ul>

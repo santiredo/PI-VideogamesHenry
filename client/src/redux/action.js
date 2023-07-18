@@ -25,7 +25,7 @@ export const showDetails = (id) => {
             data.platforms = data.platforms.map(platform => {
                 return `<p>${platform}</p>`
             }).join('\n')
-            data.genres = data.genres.map(genre => {
+            data.Genres = data.Genres.map(genre => {
                 return `<p>${genre}</p>`
             }).join('\n')
             return dispatch({
@@ -100,10 +100,14 @@ export const createVideogame = (videogame) => {
     return async (dispatch) => {
 
         try {
-            const dbVidoegame = await axios.post('http://localhost:3001/videogames', videogame)
+            const {name, image, Genres, description, platforms, rating, released} = videogame
+
+            const response = await axios.post('http://localhost:3001/videogames', {name, image, Genres, description, platforms, rating, released})
+            const dbVideogame = response.data
+
             return dispatch({
                 type: 'CREATE_VIDEOGAME',
-                payload: dbVidoegame
+                payload: dbVideogame
             })
             
         } catch (error) {
