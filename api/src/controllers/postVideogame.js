@@ -1,8 +1,8 @@
 const { Videogame, Genre } = require('../db')
 
-const postVideogame = async(name, description, platforms, img, released, rating, genres) => {
+const postVideogame = async(name, description, platforms, image, released, rating, genres) => {
 
-    if(!name || !description || !platforms || !released) {
+    if(!name || !description || !platforms || !released || !genres) {
         return res.status(401).send('Faltan datos')
     }
 
@@ -18,7 +18,7 @@ const postVideogame = async(name, description, platforms, img, released, rating,
         name,
         description,
         platforms,
-        img,
+        image,
         released,
         rating,
     })
