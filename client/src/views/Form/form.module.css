@@ -77,6 +77,10 @@
     transition: .5s;
 }
 
+.formDivs input::placeholder{
+    color: #0b033297;
+}
+
 .formDivs input:focus{
     transform: scale(1.01);
     transition: .5s;
