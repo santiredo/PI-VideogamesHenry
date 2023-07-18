@@ -4,6 +4,7 @@ const initialState = {
     videogames: [],
     renderedVideogames: [],
     videogameDetails: {},
+    dbVideogames: [],
     currentPage: 1,
 }
 
@@ -65,6 +66,11 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 renderedVideogames: filteredByOrigin
+            }
+        case 'CREATE_VIDEOGAME':
+            return {
+                ...state,
+                dbVideogames: [action.payload, ...state.dbVideogames]
             }
 
         default:

@@ -94,3 +94,20 @@ export const showDataBase = (origin) => {
         payload: origin
     }
 }
+
+export const createVideogame = (videogame) => {
+
+    return async (dispatch) => {
+
+        try {
+            const dbVidoegame = await axios.post('http://localhost:3001/videogames', videogame)
+            return dispatch({
+                type: 'CREATE_VIDEOGAME',
+                payload: dbVidoegame
+            })
+            
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+}

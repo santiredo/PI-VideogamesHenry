@@ -1,8 +1,11 @@
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux'
 import background from '../../images/formBackground.jpg'
 import style from './form.module.css';
 import './form.css'
+import validateForm from '../Validation/validation';
+import { createVideogame } from '../../redux/action';
 
 
 export default function Form () {
@@ -20,8 +23,31 @@ export default function Form () {
         rating: "",
     })
 
+    const [errors, setErrors] = useState({})
+
+    const handleChange = (event) => {
+        let name = event.target.name;
+        let value = event.target.value;
+        if(name === 'platforms' || name === 'genres'){
+            value = value.split(', ').filter(Boolean)
+        }
+        setForm({
+            ...form,
+            [name]: value,
+        });
+
+        setErrors(
+            validateForm(form)
+        )
+    }
+
+    const dispatch = useDispatch()
+
     const createHandler = (event) => {
         event.preventDefault()
+
+        dispatch(createVideogame(form))
+        alert('Videojuego creado con exito!')
     }
 
     const handleSelectGender = (event) => {
@@ -114,11 +140,27 @@ export default function Form () {
                 <form onSubmit={createHandler} className={style.form}>
                     <div className={style.formDivs}>
                         <label>Name*</label>
-                        <input type="text" />
+                        <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                            placeholder="Videogame's name"
+                        />
+                        {form.image && errors?.name && <span>{errors.name}</span>}
                     </div>
                     <div className={style.formDivs}>
                         <label>Image</label>
-                        <input type="text" />
+                        <input
+                            id="image"
+                            type="text"
+                            name="image"
+                            value={form.image}
+                            onChange={handleChange}
+                            placeholder="http://example.com/videogame's-image.jpg"
+                        />
+                        {errors?.image && <span>{errors.image}</span>}
                     </div>
                     <div className={style.formDivs}>
                         <div className={style.genderPlatformDiv}>
@@ -203,20 +245,52 @@ export default function Form () {
                                 </div>
                             </div>                            
                         </div>
-                        <ul><li>{form.genres.map(genre => `${genre}, `)}</li></ul>
-                        <ul><li>{form.platforms.map(platform => `${platform}, `)}</li></ul>
+                        <ul>
+                            <li id="genres" name="genres" value={form.genres} onChange={handleChange}>
+                                {form.genres.map(genre => `${genre}, `)}
+                            </li>
+                        </ul>
+                        <ul>
+                            <li id="platforms" name="platforms" value={form.platforms} onChange={handleChange}>
+                                {form.platforms.map(platform => `${platform}, `)}
+                            </li>
+                        </ul>
                     </div>
                     <div className={style.formDivs}>
                         <label>Description*</label>
-                        <input type="text" />
+                        <input
+                            id="description"
+                            type="text"
+                            name="description"
+                            value={form.description}
+                            onChange={handleChange}
+                            placeholder="What is it about? (min 50 words)"
+                        />
+                        {form.released && errors?.description && <span>{errors.description}</span>}
                     </div>
                     <div className={style.formDivs}>
                         <label>Released*</label>
-                        <input type="text" />
+                        <input
+                            id="released"
+                            type="text"
+                            name="released"
+                            value={form.released}
+                            onChange={handleChange}
+                            placeholder="YYYY-MM-DD"
+                        />
+                        {form.rating && errors?.released && <span>{errors.released}</span>}
                     </div>
                     <div className={style.formDivs}>
                         <label>Rating</label>
-                        <input type="text" />
+                        <input
+                            id="rating"
+                            type="text"
+                            name="rating"
+                            value={form.rating}
+                            onChange={handleChange}
+                            placeholder="7.5"
+                        />
+                        {errors?.rating && <span>{errors.rating}</span>}
                     </div>
                     <div className={style.formDivs}>
                         <button className={style.button}>Create</button>
