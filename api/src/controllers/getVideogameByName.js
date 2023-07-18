@@ -3,11 +3,13 @@ const getVideogames = require('../controllers/getVideogames')
 
 const getVideogameByName = async(name) => {
     
-        const videogames = await getVideogames()
+        let videogames = await getVideogames()
 
-        videogames.filter(game => game.name.toLowerCase().includes(name.toLowerCase()))
+        videogames = videogames.filter(game => {
+            return game.name.toLowerCase().includes(name.toLowerCase())
+        })
 
-        return videogames
+        return videogames.slice(0, 15)
 
 /*         const DBgame = await Videogame.findAll({
             where:{
@@ -16,7 +18,7 @@ const getVideogameByName = async(name) => {
                 }
             }
         })
-        DBgame.splice(15, DBgame.length-15)
+        DBgame.slice(0, 15)
 
 
         if(DBgame.length < 15){

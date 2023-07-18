@@ -7,6 +7,8 @@ const getByNameHandler = async (req, res) => {
 
         const videogames = await getVideogameByName(name)
 
+        console.log(videogames.length)
+
         res.status(200).json(videogames)
         
     } catch (error) {
