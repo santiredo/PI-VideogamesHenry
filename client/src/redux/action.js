@@ -87,3 +87,10 @@ export const orderByGenre = (genre) => {
         payload: genre
     }
 }
+
+export const showDataBase = (origin) => {
+    return {
+        type: 'ORIGIN',
+        payload: origin
+    }
+}

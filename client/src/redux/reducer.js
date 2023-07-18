@@ -56,6 +56,16 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 renderedVideogames: filteredVideogames
             }
+        case 'ORIGIN':
+            let filteredByOrigin = []
+
+            if(action.payload === 'DataBase') filteredByOrigin = state.videogames.filter(videogame => videogame.id.length > 6)
+            if(action.payload === 'Api') filteredByOrigin = state.videogames.filter(videogame => typeof videogame.id === 'number')
+            if(action.payload === 'ShowAll') filteredByOrigin = state.videogames
+            return {
+                ...state,
+                renderedVideogames: filteredByOrigin
+            }
 
         default:
             return state;
