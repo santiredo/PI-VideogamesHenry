@@ -50,7 +50,7 @@ export default function rootReducer(state = initialState, action) {
                 })
             }
         case 'GENRE':
-            let filteredVideogames = state.renderedVideogames.filter(videogame => videogame.genres.includes(action.payload))
+            let filteredVideogames = state.videogames.filter(videogame => videogame.Genres.includes(action.payload))
 
             if(action.payload === 'ShowAll') filteredVideogames = state.videogames
             return {
