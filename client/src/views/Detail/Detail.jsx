@@ -45,19 +45,36 @@ export default function Detail() {
                                 <img src={videogame.image} alt="" />
                             </div>
                             <div className={style.detailsDiv}>
-                                <div className={style.detailsInfo}>
-                                    <div>
-                                        <h5>Id: {videogame.id}</h5>
-                                        <h5>Released: {videogame.released}</h5>
-                                        <h5>Rating: {videogame.rating}</h5>
-                                        <h4>Genres: </h4>
-                                        <div className={style.platforms} dangerouslySetInnerHTML={{ __html: videogame.Genres}}></div>
+                                {typeof videogame.id === 'number'
+                                ? (
+                                    <div className={style.detailsInfo}>
+                                        <div>
+                                            <h5>Id: {videogame.id}</h5>
+                                            <h5>Released: {videogame.released}</h5>
+                                            <h5>Rating: {videogame.rating}</h5>
+                                            <h4>Genres: </h4>
+                                            <div className={style.platforms} dangerouslySetInnerHTML={{ __html: videogame.Genres}}></div>
+                                        </div>
+                                        <div>
+                                            <h4>Platforms: </h4>
+                                            <div className={style.platforms} dangerouslySetInnerHTML={{ __html: videogame.platforms}}></div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4>Platforms: </h4>
-                                        <div className={style.platforms} dangerouslySetInnerHTML={{ __html: videogame.platforms}}></div>
-                                    </div>
-                                </div>
+                                ) : (
+                                        <div className={style.detailsWithLongerId}>
+                                            <h6 className={style.longId}>Id: {videogame.id}</h6>
+                                            <div>
+                                                <h5>Released: {videogame.released}</h5>
+                                                <h5>Rating: {videogame.rating}</h5>
+                                                <h4>Genres: </h4>
+                                                <div className={style.platforms} dangerouslySetInnerHTML={{ __html: videogame.Genres}}></div>
+                                            </div>
+                                            <div>
+                                                <h4>Platforms: </h4>
+                                                <div className={style.platforms} dangerouslySetInnerHTML={{ __html: videogame.platforms}}></div>
+                                            </div>
+                                        </div>
+                                )}
                             </div>
                         </div>
                         <div
