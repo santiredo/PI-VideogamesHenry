@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import background from '../../images/formBackground.jpg'
@@ -31,6 +30,18 @@ export default function Form () {
         if(name === 'platforms' || name === 'Genres'){
             value = value.split(', ').filter(Boolean)
         }
+
+        if(name === 'released'){
+            value = value.replace(/-/g, '');
+
+            if(value.length > 4){
+                value = value.slice(0, 4)+'-'+value.slice(4)
+            }
+            if(value.length > 7){
+                value = value.slice(0, 7)+'-'+value.slice(7)
+            }
+        }
+
         setForm({
             ...form,
             [name]: value,
@@ -39,6 +50,7 @@ export default function Form () {
         setErrors(
             validateForm(form)
         )
+
     }
 
     const dispatch = useDispatch()
@@ -46,11 +58,25 @@ export default function Form () {
     const createHandler = (event) => {
         event.preventDefault()
 
-        console.log(form)
+        console.log(form.rating)
+        
+        if(form.rating === '') {
+            form.rating = 0
+        }
 
-        dispatch(createVideogame(form))
-        alert('Videojuego creado con exito!')
+        try {
+            if(errors.name || errors.image || errors.Genres || errors.platforms || errors.description || errors.released || errors.rating){
+                throw new Error('You must follow the requirements')
+            }
+            
+            dispatch(createVideogame(form))
+            
+        } catch (error) {
+            alert(error.message)
+        }
     }
+        
+        
 
     const handleSelectGender = (event) => {
         const genderOptions = document.querySelector('#genderOptionsForm');
@@ -67,7 +93,7 @@ export default function Form () {
                 genderOptions.classList.remove('hideGenderForm');
                 genderOptions.classList.add('hiddenOptionsForm')
                 
-            }, 500);
+            }, 400);
             
             genderOptions.classList.remove('genderActiveForm')
             genderOptions.classList.add('hideGenderForm')
@@ -156,7 +182,7 @@ export default function Form () {
                             onChange={handleChange}
                             placeholder="Videogame's name"
                         />
-                        {form.image && errors?.name && <span>{errors.name}</span>}
+                        {errors?.name && <span>{errors.name}</span>}
                     </div>
                     <div className={style.formDivs}>
                         <label>Image</label>
@@ -274,19 +300,20 @@ export default function Form () {
                             onChange={handleChange}
                             placeholder="What is it about? (min 50 words)"
                         />
-                        {form.released && errors?.description && <span>{errors.description}</span>}
+                        {errors?.description && <span>{errors.description}</span>}
                     </div>
                     <div className={style.formDivs}>
                         <label>Released*</label>
                         <input
                             id="released"
                             type="text"
+                            maxLength="10"
                             name="released"
                             value={form.released}
                             onChange={handleChange}
                             placeholder="YYYY-MM-DD"
                         />
-                        {form.rating && errors?.released && <span>{errors.released}</span>}
+                        {errors?.released && <span>{errors.released}</span>}
                     </div>
                     <div className={style.formDivs}>
                         <label>Rating</label>
