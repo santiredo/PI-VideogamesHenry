@@ -75,7 +75,8 @@ export default function rootReducer(state = initialState, action) {
                 dbVideogames: [action.payload, ...state.dbVideogames]
             }
         case 'SEARCH_BY_NAME':
-            let renderedByName = state.videogames.filter(videogame => videogame.name.toLowerCase().includes(action.payload))
+            let renderedByName = state.renderedVideogames.filter(videogame => videogame.name.toLowerCase().includes(action.payload))
+            if(action.payload === '') renderedByName = state.videogames
             return {
                 ...state,
                 renderedVideogames: renderedByName
