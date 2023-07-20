@@ -48,7 +48,7 @@
 
 .form{
     padding: 30px;
-    background-color: #adeaf976;
+    background-color: #adeaf9d1;
     border-radius: 3px;
     width: 50%;
     height: 100%;
@@ -58,6 +58,7 @@
 }
 
 .formDivs{
+    position: relative;
     color: #0B0332;
     margin: 5px 0;
     width: 100%;
@@ -123,6 +124,34 @@
     cursor: pointer;
     transform: translateX(-5px);
     transition: .5s;
+}
+
+.formDivs span{
+    font-size: 15px;
+    letter-spacing: 1px;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    color: #8201BC;
+    border-radius: 2px;
+    animation: spanError 0.5s;
+    z-index: 1;
+    transition: .5s;
+}
+
+@keyframes spanError {
+    0%{
+        opacity: 0;
+        top: 27px;
+    }
+    30%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        top: 12px;
+    }
+    
 }
 
 .button{
