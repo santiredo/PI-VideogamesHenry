@@ -8,6 +8,15 @@ const initialState = {
     dbVideogames: [],
     listedByName: [],
     currentPage: 1,
+    errors: {
+        name:false,
+        description:false,
+        Genres:false,
+        platforms:false,
+        image:false,
+        released:false,
+        rating:false
+    }
 }
 
 export default function rootReducer(state = initialState, action) {

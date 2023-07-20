@@ -102,19 +102,17 @@ export const createVideogame = (videogame) => {
         try {
             const {name, image, Genres, description, platforms, rating, released} = videogame
 
-            console.log(typeof rating)
-            console.log(rating)
-
             const response = await axios.post('http://localhost:3001/videogames', {name, image, Genres, description, platforms, rating, released})
             const dbVideogame = response.data
 
+            console.log(dbVideogame)
             return dispatch({
                 type: 'CREATE_VIDEOGAME',
                 payload: dbVideogame
             })
             
         } catch (error) {
-            alert(error.message)
+            alert("Some data is missing")
         }
     }
 }

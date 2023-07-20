@@ -8,11 +8,12 @@ const postVideogameHandler = async(req, res) => {
 
         const newVideogame = await postVideogame(name, description, platforms, image, released, rating, Genres)
 
+        console.log(newVideogame)
+
         res.status(200).json(newVideogame)
         
     } catch (error) {
-        res.status(500).json({error: error.message})
-    }
+        res.status(400).json({ error: error.message })    }
 }
 
 module.exports = postVideogameHandler
