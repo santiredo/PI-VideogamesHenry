@@ -89,6 +89,7 @@
 }
 
 .formDivs ul{
+    position: relative;
     padding: 5px 0 0 2.5%;
     display: flex;
     flex-direction: row;
@@ -99,6 +100,29 @@
     border: none;
     border-radius: 2px;
     list-style-type: none;
+}
+
+.formDivs ul p{
+    border-radius: 2px;
+    text-align: center;
+    background-color: #8201BC;
+    height: 30px;
+    padding: 0 0 7.5px 0;
+    width: 40px;
+    margin: 0;
+    top: -3.5px;
+    position: absolute;
+    font-size: 25px;
+    font-weight: 900;
+    right: 0;
+    color: #0B0332;
+    transition: .5s;
+}
+
+.formDivs ul p:hover{
+    cursor: pointer;
+    transform: translateX(-5px);
+    transition: .5s;
 }
 
 .button{

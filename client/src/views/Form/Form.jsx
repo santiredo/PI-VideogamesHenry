@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import background from '../../images/formBackground.jpg'
 import style from './form.module.css';
 import './form.css'
-import validateForm from '../Validation/validation';
+import validateForm, { validateSubmit } from '../Validation/validation';
 import { createVideogame } from '../../redux/action';
 
 
@@ -47,33 +47,29 @@ export default function Form () {
             [name]: value,
         });
 
-        setErrors(
-            validateForm(form)
-        )
-
     }
+
+    
+    useEffect(() => {
+        setErrors(validateForm(form))
+    },[form])
+
 
     const dispatch = useDispatch()
 
     const createHandler = (event) => {
         event.preventDefault()
-
-        console.log(form.rating)
         
         if(form.rating === '') {
             form.rating = 0
         }
-
-        try {
-            if(errors.name || errors.image || errors.Genres || errors.platforms || errors.description || errors.released || errors.rating){
-                throw new Error('You must follow the requirements')
-            }
-            
+        
+        if(validateSubmit(form)){
+            alert('You must fill the inputs correctly')
+        } else{
             dispatch(createVideogame(form))
-            
-        } catch (error) {
-            alert(error.message)
         }
+
     }
         
         
@@ -131,8 +127,14 @@ export default function Form () {
         console.log(genre)
 
         console.log(form)
+        if(form.Genres.length < 3 && !form.Genres.includes(genre)){
+            setForm({...form, Genres: [...form.Genres, genre]});
+        } else if(form.Genres.includes(genre)){
+            alert('This genre is already added')
+        } else{
+            alert('You can only choose 3 different genres for the videogame')
+        }
 
-        setForm({...form, Genres: [...form.Genres, genre]});
 
         console.log(form)
 
@@ -152,8 +154,13 @@ export default function Form () {
         const platform = event.target.innerText;
         const platformOptions = document.querySelector('#platformOptions');
 
-        setForm({...form, platforms: [...form.platforms, platform]});
-
+        if(form.platforms.length < 5 && !form.platforms.includes(platform)){
+            setForm({...form, platforms: [...form.platforms, platform]});
+        } else if(form.platforms.includes(platform)){
+            alert('This platform is already added')
+        } else{
+            alert('You can only choose 5 different platforms for the videogame')
+        }
         setPlatform(false)
 
         setTimeout(() => {
@@ -164,6 +171,23 @@ export default function Form () {
         
         platformOptions.classList.remove('platformActive')
         platformOptions.classList.add('hidePlatform')
+    }
+
+    const deleteGenre = () => {
+
+        const updatedGenres = [...form.Genres];
+
+        updatedGenres.pop();
+
+        setForm({ ...form, Genres: updatedGenres });
+    }
+
+    const deletePlataform = () => {
+        const updatedPlatforms = [...form.platforms];
+
+        updatedPlatforms.pop();
+
+        setForm({ ...form, platforms: updatedPlatforms });
     }
 
     return (
@@ -283,11 +307,13 @@ export default function Form () {
                             <li id="Genres" name="Genres" value={form.Genres} onChange={handleChange}>
                                 {form.Genres.map(genre => `${genre}, `)}
                             </li>
+                            <p onClick={deleteGenre}>⇠</p>
                         </ul>
                         <ul>
                             <li id="platforms" name="platforms" value={form.platforms} onChange={handleChange}>
                                 {form.platforms.map(platform => `${platform}, `)}
                             </li>
+                            <p onClick={deletePlataform}>⇠</p>
                         </ul>
                     </div>
                     <div className={style.formDivs}>
