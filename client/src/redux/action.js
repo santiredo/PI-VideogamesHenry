@@ -124,3 +124,16 @@ export const searchByName = (name) => {
         payload: name
     }
 }
+
+export const orderPostFilter = (page) => {
+    return {
+        type: 'ORDER_POST_FILTER',
+        payload: page
+    }
+}
+
+export const showAll = () => {
+    return {
+        type: 'SHOW_ALL'
+    }
+}

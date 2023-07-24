@@ -250,3 +250,33 @@
     top: calc(50% - 5px);
     left: -15px;
 }
+
+.refresh{
+    padding: 2px 10px;
+    color: #0B0332;
+    width: 10px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    transition: .5s;
+    background-color: #DC80E6;
+}
+
+.refresh:hover{
+    cursor: pointer;
+}
+
+.refresh:hover p{
+    transform: rotate(-50deg);
+    transition: .5s;
+}
+
+.refresh p{
+    margin: 0;
+    transition: .5s;
+}

@@ -63,8 +63,8 @@ export default function rootReducer(state = initialState, action) {
         case 'GENRE':
             let filteredVideogames = state.videogames.filter(videogame => videogame.Genres.includes(action.payload))
 
-            if(action.payload === 'ShowAll') filteredVideogames = state.videogames
-            return {
+/*             if(action.payload === 'ShowAll') filteredVideogames = state.videogames
+ */            return {
                 ...state,
                 renderedVideogames: filteredVideogames
             }
@@ -73,8 +73,8 @@ export default function rootReducer(state = initialState, action) {
 
             if(action.payload === 'DataBase') filteredByOrigin = state.videogames.filter(videogame => videogame.id.length > 6)
             if(action.payload === 'Api') filteredByOrigin = state.videogames.filter(videogame => typeof videogame.id === 'number')
-            if(action.payload === 'ShowAll') filteredByOrigin = state.videogames
-            return {
+/*             if(action.payload === 'ShowAll') filteredByOrigin = state.videogames
+ */            return {
                 ...state,
                 renderedVideogames: filteredByOrigin
             }
@@ -89,6 +89,16 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 renderedVideogames: renderedByName
+            }
+        case "ORDER_POST_FILTER":
+            return {
+                ...state,
+                currentPage: action.payload
+            }
+        case 'SHOW_ALL':
+            return {
+                ...state,
+                renderedVideogames: state.videogames
             }
 
         default:

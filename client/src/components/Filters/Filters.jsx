@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { orderByGenre, orderVideogames, showDataBase } from '../../redux/action';
+import { orderByGenre, orderPostFilter, orderVideogames, showAll, showDataBase, showVideogames } from '../../redux/action';
 import './filters.css'
 
 
@@ -17,10 +17,16 @@ export default function Filters(){
 
     const handleGender = (event) => {
         dispatch(orderByGenre(event.target.getAttribute('value')))
+        dispatch(orderPostFilter(1))
     }
 
     const handleOrigin = (event) => {
         dispatch(showDataBase(event.target.getAttribute('value')))
+        dispatch(orderPostFilter(1))
+    }
+
+    const handleRefresh = () => {
+        dispatch(showAll())
     }
 
     // CSS DE LOS SELECTS
@@ -131,9 +137,6 @@ export default function Filters(){
                 </div>
                 <div className='hiddenOptions' id="genderOptions">
                     <div className="option">
-                        <p onClick={handleGender} value="ShowAll">Show all</p>
-                    </div>
-                    <div className="option">
                         <p onClick={handleGender} value="Action">Action</p>
                     </div>
                     <div className="option">
@@ -201,15 +204,15 @@ export default function Filters(){
                 </div>
                 <div className='hiddenOptions' id="originOptions">
                     <div className="option">
-                        <p onClick={handleOrigin} value="ShowAll">Show all</p>
-                    </div>
-                    <div className="option">
                         <p onClick={handleOrigin} value="Api">Api</p>
                     </div>
                     <div className="option">
                         <p onClick={handleOrigin} value="DataBase">Data base</p>
                     </div>
                 </div>
+            </div>
+            <div onClick={handleRefresh} className='refresh'>
+                <p>↺</p>
             </div>
         </div>
     )
