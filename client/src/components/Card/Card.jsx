@@ -13,7 +13,6 @@ export default function Card({id, name, image, Genres}){
         <div onClick={click} className={style.cardDiv}>
             <div className={style.imageDiv}>
                 <img src={image} alt="" />
-                
             </div>
             <h2>{name}</h2>
             <div className={style.data}>
