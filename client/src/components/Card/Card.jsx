@@ -5,12 +5,8 @@ import style from './card.module.css'
 
 export default function Card({id, name, image, Genres}){
 
-    const click = () => {
-        console.log(Genres)
-    }
-
     return(
-        <div onClick={click} className={style.cardDiv}>
+        <div className={style.cardDiv}>
             <div className={style.imageDiv}>
                 <img src={image} alt="" />
             </div>

@@ -5,6 +5,7 @@
     width: 100%;
     height: 100%;
     margin-bottom: 100px;
+    gap: 40px;
 }
 
 .background{
@@ -33,17 +34,13 @@
 }
 
 .formDiv{
+    position: relative;
     width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-}
-
-.videogame{
-    width: 45%;
-    background-color: #ADEAF9;
-    height: 400px;
+    height: 750px;
 }
 
 .form{
@@ -170,4 +167,159 @@
 .button:hover{
     cursor: pointer;
     transform: scale(1.1);
+}
+
+.videogame{
+    right: 0;
+    top: -30px;
+    position: absolute;
+    padding: 20px 0;
+    width: 40%;
+    background-color: #ADEAF9;
+    border-radius: 3px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.cardDiv{
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0);
+    text-align: center;
+    animation: cardDivPresentation 1s .5s forwards;
+}
+
+@keyframes cardDivPresentation {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.imageDiv{
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    display: flex;
+    border-radius: 3px;
+}
+
+.cardDiv h3{
+    position: absolute;
+    padding: 5px 5%;
+    width: 90%;
+    bottom: -20px;
+    background-color: #0B0332;
+    color: #dc80e6;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    z-index: 900;
+}
+
+.imageDiv img{
+    width: 100%;
+    height: 150px;
+    opacity: 75%;
+}
+
+.data{
+    padding: 10px 0 30px 0;
+    bottom: -5px;
+    background-color: #0B0332;
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+    border-radius: 3px;
+    opacity: 0;
+}
+
+.data h4{
+    margin: 10px 0;
+    color: #dc80e6;
+    margin-left: 40px;
+    border-radius: 2px;
+    font-weight: 100;
+    font-size: 12px;
+    padding: 0 5px;
+    width: fit-content;
+    position: relative;
+}
+
+.data h4::after{
+    content: '';
+    display: block;
+    border-radius: 100%;
+    border-top: 2px solid #dc80e6;
+    border-right: 2px solid #dc80e6;
+    border-left: 2px solid #dc80e6;
+    border-bottom: 2px solid #dc80e6;
+    position: absolute;
+    top: calc(50% - 2px);
+    left: -5px;
+}
+
+.moreDetails{
+    color: #ADEAF9;
+    margin: 0 0 0 40px;
+    border-radius: 2px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 12px;
+    padding: 2px 5px 2px 5px;
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    transition: .5s;
+}
+
+.moreDetails::before{
+    content: '';
+    display: block;
+    border-radius: 100%;
+    border-top: 1px solid #ADEAF9;
+    border-right: 1px solid #ADEAF9;
+    border-left: 1px solid #ADEAF9;
+    border-bottom: 1px solid #ADEAF9;
+    transform: rotate(-45deg);
+    top: -2px;
+    left: -2px;
+    position: absolute;
+    animation: moreDetails 2s ease-in-out infinite;
+    transition: .5s;
+}
+
+@keyframes moreDetails {
+    0%{
+        top: 20px;
+        left: -2px;
+    }
+    50%{
+        top: 20px;
+        left: 100px;
+    }
+    100%{
+        top: 20px;
+        left: -2px;
+    }   
+}
+
+.cardDiv:hover .data{
+    opacity: 1;
+    top: 180px;
+    transition: .5s;
+}
+
+.cardDiv:hover .imageDiv img{
+    z-index: 0;
+    opacity: 1;
 }

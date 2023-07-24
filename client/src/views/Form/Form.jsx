@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux'
-import background from '../../images/formBackground.jpg'
-import style from './form.module.css';
-import './form.css'
+import { useDispatch } from 'react-redux';
+import background from '../../images/formBackground.jpg';
 import validateForm, { validateSubmit } from '../Validation/validation';
 import { createVideogame } from '../../redux/action';
+import style from './form.module.css';
+import './form.css'
 
 
 export default function Form () {
@@ -358,6 +358,19 @@ export default function Form () {
                     </div>
                 </form>
                 <div className={style.videogame}>
+                    <h2>VIDEOGAME RENDER</h2>
+                    <div className={style.cardDiv}>
+                        <div className={style.imageDiv}>
+                            {form.image && <img src={form.image} alt="" />}
+                        </div>
+                        {form.name && <h3>{form.name}</h3>}
+                        {form.image && form.name && form.Genres && <div className={style.data}>
+                            {form.Genres?.map((genre) => {
+                                return <h4 key={`${genre}`}>{genre}</h4>;
+                            })}
+                            <p className={style.moreDetails}>More details</p>
+                        </div>}
+                    </div>
                 </div>
             </div>
         </div>
