@@ -16,6 +16,12 @@ export const showVideogames = () =>{
     }
 }
 
+export const loadDataBase = () => {
+    return {
+        type: 'LOAD_DATA_BASE'
+    }
+}
+
 export const showDetails = (id) => {
     
     return async (dispatch) => {

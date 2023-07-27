@@ -29,6 +29,11 @@ export default function rootReducer(state = initialState, action) {
                 renderedVideogames: action.payload,
                 loadingHome: false
             }
+        case 'LOAD_DATA_BASE':
+            return {
+                ...state,
+                dbVideogames: state.videogames.filter(videogame => videogame.id.length > 6)
+            }
         case 'SHOW_DETAILS':
             return {
                 ...state,
