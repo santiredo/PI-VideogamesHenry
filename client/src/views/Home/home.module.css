@@ -88,16 +88,38 @@
     margin: 20px 20px 0 30px;
     flex-direction: row;
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
 }
 
-.eachGame p{
+.eachGame div{
+    width: 60px;
+}
+
+.myGameName{
+    margin: 0;
+    font-size: 20px;
+}
+
+.image{
+    height: 30px;
     margin: 0;
 }
 
-.eachGame img{
-    width: 20px;
-    height: 20px;
+.bin{
+    width: 25px;
+    height: 25px;
     position: absolute;
     right: 25px;
-    top: calc(50% - 10px);
+    top: 0;
+}
+
+.eachGame:hover .image,
+.eachGame:hover .myGameName { 
+    transform: translateX(10px);
+}
+
+.bin:hover + .eachGame{
+    cursor: pointer;
 }

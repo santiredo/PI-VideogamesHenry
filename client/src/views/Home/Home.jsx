@@ -39,8 +39,9 @@ export default function Home () {
                         {dbVideogames?.map(videogame => {
                             return (
                                 <div key={videogame.id} className={style.eachGame}>
-                                    <p>{videogame.name}</p>
-                                    <img src={bin} alt="" />
+                                    <div><img className={style.image} src={videogame.image} alt="" /></div>
+                                    <p className={style.myGameName}>{videogame.name}</p>
+                                    <img className={style.bin} src={bin} alt="" />
                                 </div>
                             )
                             
