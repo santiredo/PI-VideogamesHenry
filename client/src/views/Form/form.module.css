@@ -40,7 +40,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 750px;
+    height: 650px;
 }
 
 .form{
@@ -75,10 +75,25 @@
     transition: .5s;
 }
 
+.formDivs textarea{
+    padding: 5px 0 2.5px 2.5%;
+    color: #0B0332;
+    height: 120px;
+    width: 97.5%;
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    background-color: #adeaf9a7;
+    border: none;
+    border-radius: 2px;
+    transition: .5s;
+}
+
+.formDivs textarea::placeholder,
 .formDivs input::placeholder{
     color: #0b033297;
 }
 
+.formDivs textarea:focus,
 .formDivs input:focus{
     transform: scale(1.01);
     transition: .5s;
@@ -177,7 +192,7 @@
     width: 40%;
     background-color: #ADEAF9;
     border-radius: 3px;
-    height: 50%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;

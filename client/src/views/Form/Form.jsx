@@ -68,6 +68,17 @@ export default function Form () {
             alert('You must fill the inputs correctly')
         } else{
             dispatch(createVideogame(form))
+            alert('Videogame created successfully')
+
+            setForm({
+                name: "",
+                image:"",
+                Genres: [],
+                platforms: [],
+                description: "",
+                released: "",
+                rating: "",
+            })
         }
 
     }
@@ -318,7 +329,7 @@ export default function Form () {
                     </div>
                     <div className={style.formDivs}>
                         <label>Description*</label>
-                        <input
+                        <textarea
                             id="description"
                             type="text"
                             name="description"
