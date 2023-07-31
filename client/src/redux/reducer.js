@@ -105,6 +105,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 renderedVideogames: state.videogames
             }
+        case 'DELETE_VIDEOGAME':
+            return {
+                ...state,
+                dbVideogames: action.payload,
+            }
 
         default:
             return state;

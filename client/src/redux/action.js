@@ -143,3 +143,20 @@ export const showAll = () => {
         type: 'SHOW_ALL'
     }
 }
+
+export const deleteVideogame = (id) => {
+    return async (dispatch) => {
+
+        try {
+            const response = await axios.delete(`http://localhost:3001/videogames/${id}`)
+            const dbVideogames = response.data
+            return dispatch({
+                type: 'DELETE_VIDEOGAME',
+                payload: dbVideogames
+            })
+            
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+}

@@ -7,7 +7,7 @@ import background from '../../images/homeBackground.jpg';
 import bin from '../../images/delete.png';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadDataBase } from '../../redux/action';
+import { deleteVideogame, loadDataBase, showVideogames } from '../../redux/action';
 import style from './home.module.css';
 
 
@@ -20,6 +20,11 @@ export default function Home () {
     const showMyGamesHandler = () => {
         dispatch(loadDataBase())
         gamesHandler ? setGameHandler(false) : setGameHandler(true)
+    }
+
+    const deleteVideogameHandler = (id) => {
+        dispatch(deleteVideogame(id))
+        dispatch(showVideogames())
     }
 
     return (
@@ -41,7 +46,7 @@ export default function Home () {
                                 <div key={videogame.id} className={style.eachGame}>
                                     <div><img className={style.image} src={videogame.image} alt="" /></div>
                                     <p className={style.myGameName}>{videogame.name}</p>
-                                    <img className={style.bin} src={bin} alt="" />
+                                    <img onClick={() => deleteVideogameHandler(videogame.id)} className={style.bin} src={bin} alt="" />
                                 </div>
                             )
                             

@@ -120,6 +120,6 @@
     transform: translateX(10px);
 }
 
-.bin:hover + .eachGame{
+.bin:hover{
     cursor: pointer;
 }
