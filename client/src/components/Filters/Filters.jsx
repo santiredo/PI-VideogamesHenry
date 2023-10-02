@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { orderByGenre, orderPostFilter, orderVideogames, showAll, showDataBase, showVideogames } from '../../redux/action';
+import { orderByGenre, orderPostFilter, orderVideogames, showAll, showDataBase } from '../../redux/action';
 import './filters.css'
 
 
